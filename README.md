@@ -41,4 +41,14 @@ class NotesApplication{
 		
 		return list;
 	}
+	
+	delete(note_id){
+		this.notes.pop(note_id);
+		
+	}
+	
+	edit(note_id, new_content){
+		this.notes[note_id] = new_content;
+		
+	}
 }
