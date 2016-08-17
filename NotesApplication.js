@@ -1,7 +1,6 @@
-/*A Note Application Class*/
-class NotesApplication{
-    
-	//initialize object
+class Note{
+	
+		//initialize object
 	constructor(author){
 		
 		if(typeof(author) === 'string'){
@@ -45,6 +44,8 @@ class NotesApplication{
 		else
 		    console.log(list);
 	}
+	
+
 	
 	//Get note by note_id
 	get(note_id){
@@ -119,5 +120,49 @@ class NotesApplication{
 			
 			        console.log("note id must be an integer and note content must be a string");
 		      }
+    }
+    
+}
+
+
+/*A Note Application Class*/
+class NotesApplication{
+    
+    constructor(){
+    	this.note = [];
+    }
+    
+    getNote(notes, note_id){
+    	
+    	if(this.note.length >= 1 ){
+    	    return this.note[notes.author].get(note_id);
+    	}
+    }
+    
+    addNotes(new_note){
+    	
+    	if(new_note instanceof Note){
+    	
+    		var author = this.note[new_note.author];
+    	
+    		if(author !== null && author !== undefined){
+    			
+           		console.log("Duplicate Author creation.");
+           		
+    		}
+    		else
+    	  		this.note[new_note.author] = new_note;
+    	}else{
+    		
+    		console.log("Invalid note parameter");
+    	}
+    }
+    
+    viewAllNotes(){
+    	
+    	for( var i in this.note ){
+    		var myNote = this.note[i];
+    		myNote.listNotes()
+    	}
     }
 }
