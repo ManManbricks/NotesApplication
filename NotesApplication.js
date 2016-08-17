@@ -1,6 +1,6 @@
 class Note{
 	
-		//initialize object
+	//initialize object
 	constructor(author){
 		
 		if(typeof(author) === 'string'){
@@ -8,8 +8,8 @@ class Note{
 		   this.author = author;
 		   this.notes = [];
 		}else{
-			
-			//display error message
+		   
+		   //display error message
 		   console.log("author name must be a string");
 		}
 	}
@@ -21,7 +21,6 @@ class Note{
 			
 		   this.notes.push(note_content);
 		}else{
-			
 			//display error message
 			console.log("Note content must be a string");
 		}
@@ -40,12 +39,10 @@ class Note{
 		}
 		
 		if(list === "")
-			console.log("You have not added a note yet");
+		    console.log("You have not added a note yet");
 		else
 		    console.log(list);
 	}
-	
-
 	
 	//Get note by note_id
 	get(note_id){
@@ -57,8 +54,7 @@ class Note{
 			else
 				console.log("note id must be an integer");
 		}else{
-			
-			console.log("note_id must be an integer");
+				console.log("note_id must be an integer");
 		}
 	}
 	
@@ -67,17 +63,17 @@ class Note{
 		
 		if(typeof(search_text) === "string"){
 			
-			var list = "Showing results for search ‘" + search_text + "’" + "\n\n";
+		    var list = "Showing results for search ‘" + search_text + "’" + "\n\n";
 		    var resultEmpty = true;
 		    
 			for( var i = 0; i < this.notes.length; i++ ){
 			
 				if(this.notes[i].includes(search_text)){
 				
-		    		list += "Note ID: " + i + "\n";
-				    list += this.notes[i] + "\n\n";
-			    	list += "By Author " + this.author + "\n\n";
-			    	resultEmpty = false;
+		    			list += "Note ID: " + i + "\n";
+				    	list += this.notes[i] + "\n\n";
+			    		list += "By Author " + this.author + "\n\n";
+			    		resultEmpty = false;
 			     }
 			}
 			
@@ -87,7 +83,6 @@ class Note{
 				return list;
 				
 		}else{
-			
 			return "Enter a search string";
 		}
 	}
@@ -98,11 +93,10 @@ class Note{
 			if(typeof(note_id) === "number"){
 			
 				if(parseInt(note_id) === note_id)
-		        	this.notes.pop(note_id);
-		    	else
+		        		this.notes.pop(note_id);
+		    		else
 				    console.log("note id must be an integer");
 		     }else{
-			
 			        console.log("note_id must be an integer");
 		      }
 	}
@@ -113,17 +107,15 @@ class Note{
 		if(typeof(note_id) === "number" && typeof(new_content) === "string"){
 			
 				if(parseInt(note_id) === note_id)
-		        	this.notes[note_id] = new_content;
-		        else
-				    console.log("note id must be an integer");
+		        		this.notes[note_id] = new_content;
+		        	else
+				    	console.log("note id must be an integer");
 		     }else{
-			
-			        console.log("note id must be an integer and note content must be a string");
+				console.log("note id must be an integer and note content must be a string");
 		      }
-    }
+        }
     
 }
-
 
 /*A Note Application Class*/
 class NotesApplication{
@@ -136,26 +128,21 @@ class NotesApplication{
     	
     		if(notes instanceof Note){
     	        
-    	        if(typeof(note_id) === "number"){
+    	        	if(typeof(note_id) === "number"){
 			
-					if(parseInt(note_id) === note_id){
+				if(parseInt(note_id) === note_id){
 					
-						 return this.authornote[notes.author].get(note_id);
-					}else{
-					
-						console.log("note id must be an integer");
-					}
-    	        }else{
-    	        	
+				 	return this.authornote[notes.author].get(note_id);
+				}else{
+					console.log("note id must be an integer");
+				}
+    	        	}else{
     	        		console.log("note id must be an integer");
-    	        }
+    	        	}
     		}else{
     			
     			console.log("Invalid type parameter");
     		}
-				
-    	   
-    	
     }
     
     addAuthorNotes(new_note){
@@ -167,7 +154,6 @@ class NotesApplication{
     		if(author !== null && author !== undefined){
     			
            		console.log("Duplicate Author creation.");
-           		
     		}
     		else
     	  		this.authornote[new_note.author] = new_note;
