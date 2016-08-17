@@ -129,21 +129,40 @@ class Note{
 class NotesApplication{
     
     constructor(){
-    	this.note = [];
+    	this.authornote = {};
     }
     
     getNote(notes, note_id){
     	
-    	if(this.note.length >= 1 ){
-    	    return this.note[notes.author].get(note_id);
-    	}
+    		if(notes instanceof Note){
+    	        
+    	        if(typeof(note_id) === "number"){
+			
+					if(parseInt(note_id) === note_id){
+					
+						 return this.authornote[notes.author].get(note_id);
+					}else{
+					
+						console.log("note id must be an integer");
+					}
+    	        }else{
+    	        	
+    	        		console.log("note id must be an integer");
+    	        }
+    		}else{
+    			
+    			console.log("Invalid type parameter");
+    		}
+				
+    	   
+    	
     }
     
-    addNotes(new_note){
+    addAuthorNotes(new_note){
     	
     	if(new_note instanceof Note){
     	
-    		var author = this.note[new_note.author];
+    		var author = this.authornote[new_note.author];
     	
     		if(author !== null && author !== undefined){
     			
@@ -151,18 +170,25 @@ class NotesApplication{
            		
     		}
     		else
-    	  		this.note[new_note.author] = new_note;
+    	  		this.authornote[new_note.author] = new_note;
     	}else{
     		
     		console.log("Invalid note parameter");
     	}
     }
     
-    viewAllNotes(){
+    viewAllAuthorNotes(){
     	
-    	for( var i in this.note ){
-    		var myNote = this.note[i];
-    		myNote.listNotes()
+         if(Object.keys(this.authornote).length < 1){
+         	
+         	return "No created notes";
+         }
+         
+    	for( var i in this.authornote ){
+    		var myNote = this.authornote[i];
+        	myNote.listNotes()
     	}
     }
+    
+    
 }
