@@ -1,6 +1,12 @@
+/**
+ * Class Note that creates and .
+ * @constructor
+ *   @param {string} author - the author name of the note.
+ *
+ */
 class Note{
 	
-	//initialize object
+	/* initialize object*/
 	constructor(author){
 		
 		if(typeof(author) === 'string'){
